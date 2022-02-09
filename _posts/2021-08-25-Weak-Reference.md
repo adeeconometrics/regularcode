@@ -15,7 +15,7 @@ If you followed along with the series, we now know that weak references solve th
 
 Once again, let us demonstrate the problem of reference cycles with our `shared_reference<T>` class. 
 
-```Cpp
+```cpp
 #include "shared_reference.h"
 #include <iostream>
 
@@ -81,7 +81,7 @@ Before we proceed into anything, let us be clear by what we mean by taking owner
 
 To establish communication between classes, we have to make dependencies. That is why our attempts jump back and forth with our [shared_reference](https://dcode.hashnode.dev/implementing-building-blocks-of-reference-semantics-shared-reference) class. Let us consider our first attempt at establishing dependency with inheritance and discover its design flaws. Consider an adjacent example:
 
-```Cpp
+```cpp
 class SuperType{
 public:
 	SuperType() { std::cout << "SuperType resources are acquired. \n"; }
@@ -107,7 +107,7 @@ SuperType resources are released.
 ``` 
 In the above example, we inevitably call the superclass destructor. And we must call its destructor if we want to establish dependency through inheritance, but what does it mean when we decided to extend share reference to weak reference by means for the inheritance? You guessed it! We alter the state of our reference counter and possibly preemptively release our resources because of it.
 
-```Cpp
+```cpp
 shared_reference<A> sh_ref(new A());
 {
     weak_referene<A> wk_ref(sh_ref);
@@ -117,7 +117,7 @@ shared_reference<A> sh_ref(new A());
 Let us step back and consider another attempt of establishing dependency. Recall that our concern is to get access to `shared_reference`'s private members. For this case, we can use a [friend](https://en.cppreference.com/w/cpp/language/friend) to access `shared_reference`'s private members without inheriting them. 
 
 We declare a friend class inside our `shared_reference` as follows:
-```Cpp
+```cpp
 #include "weak_reference.h"
 
 template<typename T> class shared_reference{
@@ -130,7 +130,7 @@ template<typename T> class shared_reference{
 };
 ```
 Then we write a special constructor that accepts `shared_reference` and an internal representation of that reference inside our `weak_reference` class. 
-```Cpp
+```cpp
 # include "shared_reference.h"
 
 template <typename T> class weak_reference{
@@ -151,7 +151,7 @@ template <typename T> class weak_reference{
 ```
 Recall that for each time we call the reference constructor, we call the `copy()` function that increments the state of our reference counter. Since we do not want to alter the state of our reference counter, we have to counteract the consequences of calling the reference constructor. Inside our shared reference class, we declare a private function that is responsible for suppressing unintended incrementation by calling the reference constructor. 
 
-```Cpp
+```cpp
 private:
     void suppress_increment(void) noexcept {m_counter -= 1; }
     void suppress_decrement(void) noexcept {m_coutner += 1; }
@@ -183,7 +183,7 @@ Let's go beyond our requirement list and add little features that return the cur
 
 Since we have an internal representation of shared reference, we can inspect the state of its reference counter and check if our resources have been released. Additionally, we may want our weak reference to release its handle on shared reference resources. These functionalities are handled by the following public functions:
 
-```Cpp
+```cpp
     int count(void){ return handle.count(); }
     void release(void) noexcept { m_ptr = nullptr; }
     bool is_expired(void) noexcept { return m_ptr == nullptr; }
@@ -191,7 +191,7 @@ Since we have an internal representation of shared reference, we can inspect the
 
 ---
 ### Putting it all together
-```Cpp
+```cpp
 # pragma once
 # include "shared_reference.h"
 
