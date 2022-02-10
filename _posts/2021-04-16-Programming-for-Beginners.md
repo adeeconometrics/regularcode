@@ -131,7 +131,7 @@ character(chandler).
 likes(Wholikes, barney)
 /*outputs "Wholikes = robin."*/
 ```
-Let's look at one can represent such a relationship in [predicate logic](characters(Ted)):
+Let's look at one can represent such a relationship in [predicate logic](https://brilliant.org/wiki/predicate-logic/):
 $$Likes(x,y) | \ x = \text{barney}, y = \text{robin}$$
 
 If ever you worry about the new languages I keep throwing in, keep in mind that you should only focus on how it was written and some of the inspirations that led to programming syntax for this will give you a sense of navigating the space of programming languages. We will have deeper dives into these topics in the future. 

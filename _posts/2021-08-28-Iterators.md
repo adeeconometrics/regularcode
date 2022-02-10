@@ -53,7 +53,7 @@ Since all programs result in the same output, it seems that iterators are just a
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1630131603002/uKkSXUCUm.png)
 
 
-The above figure is a [Binary Search Tree (BST)](Link). Since we have not formally introduced this yet, we will take a sneak peek at traversing BST. There are three ways we can do this, and each has a different form of ordering. But let us consider the simplest: in order traversal where we start from the left-most branch resulting to `1,2,3,4,5`. Now, imagine using a pointer to walk in our tree. 
+The above figure is a [Binary Search Tree (BST)](https://en.wikipedia.org/wiki/Binary_search_tree). Since we have not formally introduced this yet, we will take a sneak peek at traversing BST. There are three ways we can do this, and each has a different form of ordering. But let us consider the simplest: in order traversal where we start from the left-most branch resulting to `1,2,3,4,5`. Now, imagine using a pointer to walk in our tree. 
 ```cpp
  void inorder(Node *node) {
    if (node != nullptr) {
