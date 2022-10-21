@@ -1,7 +1,6 @@
 ---
 title: On Pointer Types
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-12
 categories: [Programming, Computer Science, C++, Ownership Semantics]
 tags: [programming, Computer Science, C++, Ownership Semantics]

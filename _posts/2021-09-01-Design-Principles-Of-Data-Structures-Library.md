@@ -1,7 +1,6 @@
 ---
 title: "Design Principles of Data Structures Library"
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-09-01
 categories: [Programming, Computer Science, C++, Data Structures, Algorithms]
 tags: [programming, Computer Science, C++, Data Structures, Algorithms]

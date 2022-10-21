@@ -1,7 +1,6 @@
 ---
 title: "Understanding Abstract Data Types"
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-31
 categories: [Programming, Computer Science, C++, Data Structures, Algorithms]
 tags: [programming, Computer Science, C++, Data Structures, Algorithms]

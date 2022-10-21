@@ -1,7 +1,6 @@
 ---
 title: "Iterators: The link between Data Structures and Algorithms"
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-28
 categories: [Programming, Computer Science, C++, Data Structures, Algorithms]
 tags: [programming, Computer Science, C++, Data Structures, Algorithms]

@@ -1,7 +1,6 @@
 ---
 title: Unique References
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-17
 categories: [Programming, Computer Science, C++, Ownership Semantics]
 tags: [programming, Computer Science, C++, Ownership Semantics]

@@ -1,7 +1,6 @@
 ---
 title: Designing Functions
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-06-15
 categories: [Programming, Computer Science, C++]
 tags: [programming, Computer Science, C++]

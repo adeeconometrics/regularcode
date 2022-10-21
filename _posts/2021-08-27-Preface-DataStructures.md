@@ -1,8 +1,7 @@
 ---
 title: "Preface: Data Structures"
 subtitle: "Programs are composed of algorithms and data structures"
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-27
 categories: [Programming, Computer Science, C++, Data Structures, Algorithms]
 tags: [programming, Computer Science, C++, Data Structures, Algorithms]

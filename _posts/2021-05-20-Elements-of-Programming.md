@@ -1,8 +1,7 @@
 ---
 title: Elements of Programming
 subtitle: "Data Structures underlie everything we do in computer science: understanding them is critical to writing rigorous software and effective algorithms."
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-05-20
 categories: [Programming, Computer Science, Data Structures]
 tags: [programming, Computer Science, Data Structures]

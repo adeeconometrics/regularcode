@@ -1,8 +1,7 @@
 ---
 title: "Pointers and References: Design Goals and Use Cases"
 subtitle: "Other languages were made for banning pointers, are they really terrible?"
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2021-08-12
 categories: [Programming, Computer Science, C++, Ownership Semantics]
 tags: [programming, Computer Science, C++, Ownership Semantics]
