@@ -8,11 +8,11 @@ tags: [programming, Computer Science, C++, Ownership Semantics]
 math: true
 ---
 
-In our last discussion, we talked about the semantics of sharing. We fleshed out the design goals of shared reference and met the minimum design requirements. Similarly, we do the same with our implementation of weak references. 
+In our last discussion, we talked about the semantics of sharing. We fleshed out the design goals of shared reference and met the minimum design requirements. Similarly, we do the same with our implementation of weak references.
 
-If you followed along with the series, we now know that weak references solve the problem of reference cycles; that is, without weak references, shared reference may be misused, resulting in  [reference cycles](https://en.wikipedia.org/wiki/Reference_counting), which results in suppressing resource clean-up.
+If you followed along with the series, we now know that weak references solve the problem of reference cycles; that is, without weak references, shared reference may be misused, resulting in [reference cycles](https://en.wikipedia.org/wiki/Reference_counting), which results in suppressing resource clean-up.
 
-Once again, let us demonstrate the problem of reference cycles with our `shared_reference<T>` class. 
+Once again, let us demonstrate the problem of reference cycles with our `shared_reference<T>` class.
 
 ```cpp
 #include "shared_reference.h"
@@ -42,28 +42,36 @@ int main(){
 }
 
 ```
-If we compile the above code on the IDE provided below, we encounter the following output. 
+
+If we compile the above code on the IDE provided below, we encounter the following output.
+
 ```None
 Resources of A are acquired.
 Resources of B are acquired.
 ```
+
 It never released our resources at the time our objects went out of scope. This problem should be solved with a weak reference type.
 
 ---
+
 ### Design goals
+
 Our weak reference class is an extension of shared reference as it can access and modify the contents of our shared reference without imposing its presence on the `shared_reference` interface. Consequently, we have must satisfy the following requirements:
+
 - Must initialize only `shared_reference<T>` type
 - Must not take ownership of `shared_reference<T>` type
 - Pointer-like interface
-- Must provide a function of counting references 
+- Must provide a function of counting references
 
 ---
-### Implementation
-Now that we defined our goals, let us work on them!  
 
+### Implementation
+
+Now that we defined our goals, let us work on them!
 
 #### Requirement: Must initialize only `shared_reference<T>` type
-I found this a little bit tricky to implement. We will find out why it is tricky when we implement a  non-owning mechanism. But for now, let us try to partially fulfill our first requirement. 
+
+I found this a little bit tricky to implement. We will find out why it is tricky when we implement a non-owning mechanism. But for now, let us try to partially fulfill our first requirement.
 
 ```
 template<typename T> class weak_reference: public shared_reference<T>{
@@ -71,8 +79,8 @@ template<typename T> class weak_reference: public shared_reference<T>{
         explicit weak_reference(shared_reference<T>& i_ptr);
 };
 ```
-This may seem what we meant by an *extension* of shared reference. And by the looks of it, it may be a plausible assumption until we ran into the problem of calling destructors. Let us discuss the subtle design flaws on this matter in our attempt to suffice the second requirement. 
 
+This may seem what we meant by an _extension_ of shared reference. And by the looks of it, it may be a plausible assumption until we ran into the problem of calling destructors. Let us discuss the subtle design flaws on this matter in our attempt to suffice the second requirement.
 
 #### Requirement: Must not take ownership of `shared_reference<T>` type
 
@@ -97,13 +105,16 @@ int main() {
     Subtype s;
 }
 ```
+
 At the time `s` goes out of scope, it outputs the following:
+
 ```None
-SuperType resources are acquired. 
-Subtype resources are acquired. 
-Subtype resources are released. 
-SuperType resources are released. 
-``` 
+SuperType resources are acquired.
+Subtype resources are acquired.
+Subtype resources are released.
+SuperType resources are released.
+```
+
 In the above example, we inevitably call the superclass destructor. And we must call its destructor if we want to establish dependency through inheritance, but what does it mean when we decided to extend share reference to weak reference by means for the inheritance? You guessed it! We alter the state of our reference counter and possibly preemptively release our resources because of it.
 
 ```cpp
@@ -113,9 +124,11 @@ shared_reference<A> sh_ref(new A());
 } // since it calls superclass destructor the clean-up happens here
 
 ```
-Let us step back and consider another attempt of establishing dependency. Recall that our concern is to get access to `shared_reference`'s private members. For this case, we can use a [friend](https://en.cppreference.com/w/cpp/language/friend) to access `shared_reference`'s private members without inheriting them. 
+
+Let us step back and consider another attempt of establishing dependency. Recall that our concern is to get access to `shared_reference`'s private members. For this case, we can use a [friend](https://en.cppreference.com/w/cpp/language/friend) to access `shared_reference`'s private members without inheriting them.
 
 We declare a friend class inside our `shared_reference` as follows:
+
 ```cpp
 #include "weak_reference.h"
 
@@ -128,7 +141,9 @@ template<typename T> class shared_reference{
 .
 };
 ```
-Then we write a special constructor that accepts `shared_reference` and an internal representation of that reference inside our `weak_reference` class. 
+
+Then we write a special constructor that accepts `shared_reference` and an internal representation of that reference inside our `weak_reference` class.
+
 ```cpp
 # include "shared_reference.h"
 
@@ -137,9 +152,9 @@ template <typename T> class weak_reference{
     shared_reference<T> handle;
 
   public:
-    explicit weak_reference(shared_reference<T>& i_ptr) : 
-      m_ptr(i_ptr.get()), 
-      handle(i_ptr) 
+    explicit weak_reference(shared_reference<T>& i_ptr) :
+      m_ptr(i_ptr.get()),
+      handle(i_ptr)
     {}
 
     weak_reference() = default;
@@ -148,21 +163,22 @@ template <typename T> class weak_reference{
 .
 };
 ```
-Recall that for each time we call the reference constructor, we call the `copy()` function that increments the state of our reference counter. Since we do not want to alter the state of our reference counter, we have to counteract the consequences of calling the reference constructor. Inside our shared reference class, we declare a private function that is responsible for suppressing unintended incrementation by calling the reference constructor. 
+
+Recall that for each time we call the reference constructor, we call the `copy()` function that increments the state of our reference counter. Since we do not want to alter the state of our reference counter, we have to counteract the consequences of calling the reference constructor. Inside our shared reference class, we declare a private function that is responsible for suppressing unintended incrementation by calling the reference constructor.
 
 ```cpp
 private:
     void suppress_increment(void) noexcept {m_counter -= 1; }
     void suppress_decrement(void) noexcept {m_coutner += 1; }
 ```
-Since for each time, `shared_reference` destructor gets called we decrement our reference counter until it is set for clean-up, we need to make sure this will not happen in the context of `weak_reference`. So we write another private function for suppressing unintended decrementation. 
+
+Since for each time, `shared_reference` destructor gets called we decrement our reference counter until it is set for clean-up, we need to make sure this will not happen in the context of `weak_reference`. So we write another private function for suppressing unintended decrementation.
 
 In effect, our weak reference will not alter the state of the reference counter and we have got ourselves a representation of shared_reference which we shall exploit later.
 
-
 #### Requirement: Pointer-like interface
 
-We need an interface to communicate with the state of our unique reference. For consistency, it has to resemble the interface of a pointer. 
+We need an interface to communicate with the state of our unique reference. For consistency, it has to resemble the interface of a pointer.
 
 Recall that a pointer can be dereferenced with `*` and `->` operators. And we need `&` operator to inspect the location of our pointer in memory. These are the basic operators we need to overload for our unique reference. To do this, we write:
 
@@ -171,12 +187,12 @@ Recall that a pointer can be dereferenced with `*` and `->` operators. And we ne
     T *operator->(void) { return this->m_ptr; }
     T &operator&(weak_reference<T> &other) { return other.m_ptr; }
 ```
+
 Let us walk through the three lines.
 
-The first line returns a reference of `*(this->m_ptr)` which means that the content of `m_ptr` is accessed that which we can modify and read. The same idea goes with the arrow operator, we return a pointer to `m_ptr`'s location in memory. The last operator is slightly different in that it returns the address of the pointer and not the referent.  [Recall](https://dcode.hashnode.dev/pointers-and-references-design-goals-and-use-cases)  that a pointer has its own location in memory separate from the entities it points to.
+The first line returns a reference of `*(this->m_ptr)` which means that the content of `m_ptr` is accessed that which we can modify and read. The same idea goes with the arrow operator, we return a pointer to `m_ptr`'s location in memory. The last operator is slightly different in that it returns the address of the pointer and not the referent. [Recall](https://dcode.hashnode.dev/pointers-and-references-design-goals-and-use-cases) that a pointer has its own location in memory separate from the entities it points to.
 
 Let's go beyond our requirement list and add little features that return the current count of our references and their contents. We call these functions `count()`, `is_expired()`, and `release()`. The implementation is equally trivial.
-
 
 #### Requirement: Must provide a function of counting references
 
@@ -189,7 +205,9 @@ Since we have an internal representation of shared reference, we can inspect the
 ```
 
 ---
+
 ### Putting it all together
+
 ```cpp
 # pragma once
 # include "shared_reference.h"
@@ -199,17 +217,17 @@ template <typename T> class weak_reference{
     shared_reference<T> handle;
 
   public:
-    explicit weak_reference(shared_reference<T>& i_ptr) : 
-      m_ptr(i_ptr.get()), 
-      handle(i_ptr) 
+    explicit weak_reference(shared_reference<T>& i_ptr) :
+      m_ptr(i_ptr.get()),
+      handle(i_ptr)
     {i_ptr.suppress_increment();}
 
     weak_reference() = delete;
     weak_reference(const weak_reference<T> &) = delete;
     weak_reference(weak_reference<T> &&) = delete;
-    ~weak_reference() { 
+    ~weak_reference() {
       m_ptr = nullptr;
-      handle.suppress_decrement(); 
+      handle.suppress_decrement();
     }
 
     weak_reference &operator=(weak_reference<T> &&) = delete;
@@ -217,7 +235,7 @@ template <typename T> class weak_reference{
 
     T &operator*(void) { return *(this->m_ptr); }
     T *operator->(void) { return this->m_ptr; }
-    T &operator&(weak_reference<T> &other) { return other.m_ptr; } 
+    T &operator&(weak_reference<T> &other) { return other.m_ptr; }
 
     T *get(void) { return (this->m_ptr); }
     int count(void){return handle.count();}
@@ -228,7 +246,9 @@ template <typename T> class weak_reference{
 ```
 
 ---
+
 ### Test cases
+
 Time to see if we satisfied our design requirements:
 
 <iframe height="700px" width="100%" src="https://replit.com/@delvinjohn/WeakReference?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
@@ -236,16 +256,19 @@ Time to see if we satisfied our design requirements:
 In the executable program above, we noticed that weak references solve the reference cycle problem.
 
 ---
+
 ### Summary
+
 We fleshed out our design requirements and implemented our version of the weak reference to satisfy what we intend to do with it. We extended the capability of shared reference by extending its features with weak reference whereby we successfully solved the reference cycle problem.
 
-
-Here ends the ownership semantics series! I hope you carry along with you the new things we learned regarding resource management. 
+Here ends the ownership semantics series! I hope you carry along with you the new things we learned regarding resource management.
 
 As always, have fun hacking!
 
 ---
+
 ### References
+
 - Wikipedia contributors. (2021, July 29). Reference counting. In Wikipedia, The Free Encyclopedia. Retrieved 08:48, August 25, 2021, from https://en.wikipedia.org/w/index.php?title=Reference_counting&oldid=1036113247
 
 - Amiana, D. (2021). Implementing Building Blocks of Reference Semantics: Shared Reference. https://dcode.hashnode.dev/implementing-building-blocks-of-reference-semantics-shared-reference

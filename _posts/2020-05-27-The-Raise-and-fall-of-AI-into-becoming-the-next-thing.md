@@ -1,8 +1,7 @@
 ---
 title: "The Rise and Fall of AI into becoming the next Big Thing"
 subtitle: "Lessons from the hype of AI research. From theory to production, the AI community has a long history of becoming the next big thing."
-author:
-  name: Dave Amiana
+author: Dave Amiana
 date: 2020-05-27
 categories: [Computer Science, AI]
 tags: [Computer Science, AI]
@@ -23,7 +22,7 @@ The hype in AI research has ever been fuelled by intense optimism so much so tha
 
 Briefing for US Vice President [Gerald Ford](https://en.wikipedia.org/wiki/Gerald_Ford) in 1973 on the [junction-grammar](https://en.wikipedia.org/wiki/Junction_Grammar)-based computer translation model. Image source: https://bit.ly/2y7Wgrg.
 
-Programs that were developed years after the Dartmouth conference would be able to solve algebraic word problems, prove geometric theorems, and learn the English language [2–3]. Because of this, researchers in the field expressed their optimistic views to the promises of AI, *forecasting that a fully intelligent machine would be built in less than 20 years* [3]. One of the most notable claims was made by a well-known researcher at the time, Marvin Minsky (1970) who made mention that “*from three to eight years we will have a machine with the general intelligence of an average human being*” [4] although Minsky believed that he had been misquoted [1].
+Programs that were developed years after the Dartmouth conference would be able to solve algebraic word problems, prove geometric theorems, and learn the English language [2–3]. Because of this, researchers in the field expressed their optimistic views to the promises of AI, _forecasting that a fully intelligent machine would be built in less than 20 years_ [3]. One of the most notable claims was made by a well-known researcher at the time, Marvin Minsky (1970) who made mention that “_from three to eight years we will have a machine with the general intelligence of an average human being_” [4] although Minsky believed that he had been misquoted [1].
 
 With their research achievements and increasing business interest, AI research had been funded by the government and granted to fund Minsky and McCarthy’s project $ 2.2 million.
 
@@ -41,9 +40,9 @@ In 1958, American psychologist **Frank Rosenblatt** invented the **perceptron** 
 
 > In 1960, Rosenblatt and colleagues were able to show that the perceptron could in finitely many training cycles learn any task that its parameters could embody. The perceptron convergence theorem was proved for single-layer neural nets (Olazaran, 1996).
 
-The New York Times documented Rosenblatt’s claims, with his perceptrons (most notably named as **Neural Networks)**, about showcasing that perceptrons would soon be able to beat humans at chess, identify images, and *reproduce* [9]*.* At the same time, novel approaches including **Symbolic AI** have emerged.
+The New York Times documented Rosenblatt’s claims, with his perceptrons (most notably named as **Neural Networks)**, about showcasing that perceptrons would soon be able to beat humans at chess, identify images, and _reproduce_ [9]_._ At the same time, novel approaches including **Symbolic AI** have emerged.
 
-The basic form of **single-layer perceptron** has faced significant limitations in recognizing multiple types of patterns. It has been determined that single-layer perceptrons are only capable of learning linearly separable patterns — that is if you can draw a fine line between the *apples and oranges* the pattern is considered to be linearly separable. Because of this, **multi-layer perceptron** models were introduced in hopes of finding a more substantial answer to identifying non-linear patterns.
+The basic form of **single-layer perceptron** has faced significant limitations in recognizing multiple types of patterns. It has been determined that single-layer perceptrons are only capable of learning linearly separable patterns — that is if you can draw a fine line between the _apples and oranges_ the pattern is considered to be linearly separable. Because of this, **multi-layer perceptron** models were introduced in hopes of finding a more substantial answer to identifying non-linear patterns.
 
 ## Companions, Colleagues, and Critics
 
@@ -67,23 +66,23 @@ It is also important to note that Neural Network Models require a significant am
 
 In the ’70s, AI was subjected to financial setbacks and criticisms; they have failed to engrave their undertakings to production. Researchers had failed to realize the intricacies of their field and the challenges they will have to face in attempts to come up with a solution. Because of this, the funding for AI research was wiped out [3]. Despite the challenges and major setbacks the field has sought, new ideas were explored in logic programming and commonsense reasoning [5]. The problems that the field has faced in the ’70s are as follows:
 
-> *1.* Limited computer power.
+> _1._ Limited computer power.
 >
-> *2.* Intractability and combinatorial explosion. Richard Karp (1972) demonstrated that there are many problems that can only solved in exponential time (referring to Big-O complexity). *Finding solutions to these problems require unimaginable amounts of computer time except when the problems are trivial* [6].
+> _2._ Intractability and combinatorial explosion. Richard Karp (1972) demonstrated that there are many problems that can only solved in exponential time (referring to Big-O complexity). _Finding solutions to these problems require unimaginable amounts of computer time except when the problems are trivial_ [6].
 >
-> *3.* Commonsense knowledge and reasoning: *the program needs to have some idea of what it might be looking at or what it is talking about. This requires that the program know most of the same things about the world that a child does. Researchers soon discovered that this was a truly vast amount of information* [1].
+> _3._ Commonsense knowledge and reasoning: _the program needs to have some idea of what it might be looking at or what it is talking about. This requires that the program know most of the same things about the world that a child does. Researchers soon discovered that this was a truly vast amount of information_ [1].
 >
-> *4.* Moravec’s paradox. *Proving theorems and solving geometry problems is comparatively easy for computers, but a supposedly simple task like recognizing a face or crossing a room without bumping into anything is extremely difficult. This helps explain why research into vision and robotics had made so little progress by the middle 1970*s [1].
+> _4._ Moravec’s paradox. *Proving theorems and solving geometry problems is comparatively easy for computers, but a supposedly simple task like recognizing a face or crossing a room without bumping into anything is extremely difficult. This helps explain why research into vision and robotics had made so little progress by the middle 1970*s [1].
 >
-> *5.* The frame and qualification problems. *AI researchers (like John McCarthy) who used logic discovered that they could not represent ordinary deductions that involved planning or default reasoning without making changes to the structure of logic itself. They developed new logic (like non-monotonic logic and modal logic) to try to solve the problems* [7].
+> _5._ The frame and qualification problems. _AI researchers (like John McCarthy) who used logic discovered that they could not represent ordinary deductions that involved planning or default reasoning without making changes to the structure of logic itself. They developed new logic (like non-monotonic logic and modal logic) to try to solve the problems_ [7].
 
 ## The resurgence of 1980–1987
 
-In the 1980s businesses invested in a form of AI program called *expert systems* — a program that caters queries or solves problems about a specific domain of knowledge using rules of logic. These systems were built from a structured representation of a human expert’s knowledge about a specific domain. The power of these systems comes from the quality of information drawn from the human experts of the field structured by a programmable set of rules.
+In the 1980s businesses invested in a form of AI program called _expert systems_ — a program that caters queries or solves problems about a specific domain of knowledge using rules of logic. These systems were built from a structured representation of a human expert’s knowledge about a specific domain. The power of these systems comes from the quality of information drawn from the human experts of the field structured by a programmable set of rules.
 
-Because of these systems, the Japanese government-funded the AI model with its fifth-generation computer project [8]. The funding for this project cost about $850 million. *Their objectives were to write programs and build machines that could carry on conversations, translate languages, interpret pictures, and reason like human beings* [1].
+Because of these systems, the Japanese government-funded the AI model with its fifth-generation computer project [8]. The funding for this project cost about $850 million. _Their objectives were to write programs and build machines that could carry on conversations, translate languages, interpret pictures, and reason like human beings_ [1].
 
-By the same time, **John Hopfield** had his work published about a different form of neural network called the **Hopfield Networks** — a form of ***recurrent neural network\*** — that could be able to learn and process information entirely differently from the primal form of perceptrons which are essentially a form of a ***feed-forward neural network\***.
+By the same time, **John Hopfield** had his work published about a different form of neural network called the **Hopfield Networks** — a form of **\*recurrent neural network\*** — that could be able to learn and process information entirely differently from the primal form of perceptrons which are essentially a form of a **\*feed-forward neural network\***.
 
 The works of **Geoffrey Hinton** & **David Rumelhart** which have enabled neural networks to train and learn to model a series of transformation based on their respective parameters a method that is now called **backpropagation algorithm** [3]**.**
 
@@ -95,7 +94,7 @@ Due to the hype and promising notions of AI, businesses had been able to take a 
 
 > “The collapse was in the perception of AI by government agencies and investors — the field continued to make advances despite the criticism. Rodney Brooks and Hans Moravec, researchers from the related field of robotics, argued for an entirely new approach to artificial intelligence”.
 
-In 1987, the first indication of the economic setback experienced by the AI community was the sudden collapse of the market for specialized AI hardware. *An entire industry worth half a billion dollars was demolished overnight* [1]. As a consequence, the more expensive Lisp machines had rendered itself obsolete because, with the failure to materialize the promising AI solutions, there was no longer a reason to buy them. Desktop computers such as Apple and IBM started to become more mainstream in production.
+In 1987, the first indication of the economic setback experienced by the AI community was the sudden collapse of the market for specialized AI hardware. _An entire industry worth half a billion dollars was demolished overnight_ [1]. As a consequence, the more expensive Lisp machines had rendered itself obsolete because, with the failure to materialize the promising AI solutions, there was no longer a reason to buy them. Desktop computers such as Apple and IBM started to become more mainstream in production.
 
 ![img](https://miro.medium.com/max/692/0*gmsL8Uasj4qx_kvB.png)
 
@@ -109,7 +108,7 @@ As of 1993, 300 AI companies had shut down, gone bankrupt, or have been acquired
 
 With the grandeur of AI’s promises, businesses have invested tons of resources to bring AI into production and cater to business solutions. However, the young field of AI in the 90's has had suffered from (1) lack of computing power, (2) premature theoretical grounds, and (3) failure to realise the complexities of their goals to achieve human-level intelligence. In turn, AI winters and momentary recession had taken place to renew and revise long-held conceptions.
 
-Long after the field was formalized, there have been a significant amount of challenges that are currently faced in the AI community. Since AI has grown maturely over the ages, the resources and engineering have prompted theories to be made [and tested] in production. This has enabled the almost-forgotten notion perceptrons — because it requires a ton of computing power but thanks to the benefit of Moore’s Law the development has enabled systems to rekindle the promises of perceptron models and lead the field to reach some of its most ambitious goals, some are even deemed to be impossible such as the [AlphaGo](https://bit.ly/3dRY72L) project, thanks to [Deep Learning](https://bit.ly/2X8Ne5Z). Today, the field of AI has ever been expanding to explore the intricacies of *intelligent behavior* ranging from **computer vision**, **natural language understanding**, and **agent-based learning** (reinforcement learning) among other things.
+Long after the field was formalized, there have been a significant amount of challenges that are currently faced in the AI community. Since AI has grown maturely over the ages, the resources and engineering have prompted theories to be made [and tested] in production. This has enabled the almost-forgotten notion perceptrons — because it requires a ton of computing power but thanks to the benefit of Moore’s Law the development has enabled systems to rekindle the promises of perceptron models and lead the field to reach some of its most ambitious goals, some are even deemed to be impossible such as the [AlphaGo](https://bit.ly/3dRY72L) project, thanks to [Deep Learning](https://bit.ly/2X8Ne5Z). Today, the field of AI has ever been expanding to explore the intricacies of _intelligent behavior_ ranging from **computer vision**, **natural language understanding**, and **agent-based learning** (reinforcement learning) among other things.
 
 Interestingly, because of the limitation of purely Deep Learning-based models, and purely Symbolic model approach in tackling natural language understanding such as being able to synthetically engineer a system that can not only understand but also discuss and reason about matters of interest the field has been making progress into recalibrating Symbolic AI into adding-up elements of logic and probabilistic reasoning. This particular area of active research endeavor is known as [**Neuro-symbolic AI**](https://bit.ly/3ghpWDF).
 
@@ -131,8 +130,8 @@ Interestingly, because of the limitation of purely Deep Learning-based models, a
 
 [8]. Newquist, HP (1994). The Brain Makers: Genius, Ego, And Greed In The Quest For Machines That Think. New York: Macmillan/SAMS. ISBN 978–0–672–30412–5.
 
-[9] Olazaran, Mikel (1996). “A Sociological Study of the Official History of the Perceptrons Controversy”. *Social Studies of Science*. **26** (3): 611–659. [doi](https://en.wikipedia.org/wiki/Doi_(identifier)):[10.1177/030631296026003005](https://doi.org/10.1177%2F030631296026003005). [JSTOR](https://en.wikipedia.org/wiki/JSTOR_(identifier)) [285702](https://www.jstor.org/stable/285702).
+[9] Olazaran, Mikel (1996). “A Sociological Study of the Official History of the Perceptrons Controversy”. _Social Studies of Science_. **26** (3): 611–659. [doi](<https://en.wikipedia.org/wiki/Doi_(identifier)>):[10.1177/030631296026003005](https://doi.org/10.1177%2F030631296026003005). [JSTOR](<https://en.wikipedia.org/wiki/JSTOR_(identifier)>) [285702](https://www.jstor.org/stable/285702).
 
-[10] [Crevier, Daniel](https://en.wikipedia.org/wiki/Daniel_Crevier) (1993), *AI: The Tumultuous Search for Artificial Intelligence*, New York, NY: BasicBooks, [ISBN](https://en.wikipedia.org/wiki/ISBN_(identifier)) [0–465–02997–3](https://en.wikipedia.org/wiki/Special:BookSources/0-465-02997-3).
+[10] [Crevier, Daniel](https://en.wikipedia.org/wiki/Daniel_Crevier) (1993), _AI: The Tumultuous Search for Artificial Intelligence_, New York, NY: BasicBooks, [ISBN](<https://en.wikipedia.org/wiki/ISBN_(identifier)>) [0–465–02997–3](https://en.wikipedia.org/wiki/Special:BookSources/0-465-02997-3).
 
-[11]. Minsky, M., & Papert, S. A. (2017). *Perceptrons: An introduction to computational geometry*. MIT press.
+[11]. Minsky, M., & Papert, S. A. (2017). _Perceptrons: An introduction to computational geometry_. MIT press.
