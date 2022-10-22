@@ -13,7 +13,9 @@ mermaid: true
 Generative models have been successfully used for computer vision tasks such as image super-resolution (Saharia _et. al._, 2021), text-to-image synthesis (Mirza & Osindero, 2014), and 3D scene rendering (Poole, Jain, Barron, & Mildenhall, 2022) to name a few. The main idea behind generative models is to develop an approximation $q_{\phi}(x)$ of the probability distribution in a dataset $p_{\theta}(x)$. That is, the objective of generative models is to train a probabilistic model whose samples $x_i \sim q_{\phi}(x)$ approximate the data distribution $p_{\theta}$.
 
 
-The Bayesian framework offers a grounded theory for machine learning (Ghahramani, 2015). Thus, it is important to begin this section with an overview of the Bayesian approach to probability. Bayesian framework interprets probability as an assertion of belief predicated by prior knowledge or initial expectation of the distribution. In this framework, we define a prior that captures our belief about the distribution. Once an evidence is obtained, we update our initial distribution based on how the evidence in question changed the state of our belief about the true distribution. This is done by defining a posterior distribution $p (\theta | x \in  X)$. The Bayesian framework is used in Machine Learning to update the model $\mathcal{M}$ based on the distribution of a new sample $x$ drawn from the dataset $X$.
+The Bayesian framework offers a grounded theory for machine learning (Ghahramani, 2015). Thus, it is important to begin this section with an overview of the Bayesian approach to probability. Bayesian framework interprets probability as an assertion of belief predicated by prior knowledge or initial expectation of the distribution. In this framework, we define a prior that captures our belief about the distribution. Once an evidence is obtained, we update our initial distribution based on how the evidence in question changed the state of our belief about the true distribution. 
+
+The Bayesian approach starts by defining a posterior distribution $p (\theta \mid x \in  X)$. This is used in Machine Learning to update the model $\mathcal{M}$ based on the distribution of a new sample $x$ drawn from the dataset $X$.
 
 The prior predictive distribution is defined as a marginal probability of $x\in X$.
 
@@ -34,7 +36,8 @@ In general, sampling from the true distribution generally not possible for the f
 
 Early Generative models rely on Markov Chain Monte Carlo (MCMC) sampling methods during training and inference (Bond-Taylor, Leach, Long & Willcocks, 2022). MCMC methods draw samples from a posterior distribution, $x \sim q_{\phi}(x)$ where $\phi$ indexes a family of distributions. MCMC methods such as random walk tends to have long burn-in period which incurs computational overhead. For these reasons, MCMC methods does not scale well with high-dimensional data (Hinton & Sejnowski, 1983; Hinton, Osindero, & Teh, 2006).
 
-Instead of viewing the inference problem as a random sampling problem drawn from a distribution, variational inference (VI) treats it as an optimization problem (Blei, Kucukelbir, & McAuliffe, 2018). VI define a family of sufficiently large parametric distributions $\{p_{\theta} | \theta \in \Theta\}$ and solve for the parameter $\theta$ that brings the proposal distribution $q_{\phi}$ close to $p_{\theta}$.
+
+Instead of viewing the inference problem as a random sampling problem drawn from a  distribution, variational inference (VI) treats it as an optimization problem (Blei, Kucukelbir, & McAuliffe, 2018). VI define a family of sufficiently large parametric distributions $\{p_{\theta} \mid \theta \in \Theta\}$ and solve for the parameter $\theta$ that brings the proposal distribution $q_{\phi}$ close to $p_{\theta}$.
 
 $$
 \text{VI} := \min_{\theta} \mathcal{L}(q_{\phi}, p_{\theta})
@@ -42,7 +45,7 @@ $$
 
 Generative models through neural networks dates back to 1980's with its aim to learn data features without supervision (Hinton & Sejnowski, 1983 as cited in Bond-Taylor, Leach, Long & Willcocks, 2022). At the time of its inception, computers were far too limited to meet the computational demands of generative modeling. It the culmination of advancements in developing high-performance hardware, fine-tuned and specialized dataset, and computational techniques for latent-space representation (Bond-Taylor, Leach, Long & Willcocks, 2022) that led to the resurgence of generative models in the scene of deep learning. Deep generative modeling (DGM) involves a deep stacks of hidden layers used to approximate high-dimensional probability distributions (Ruthotto & Haber, 2021). Training DGMs naturally lends itself to an optimization problem where we provide a notion of distance between probability distributions $\mathcal{L}(p_{\theta}, q_{\phi})$ (Grover & Ermon, 2022). VI offers a compelling approach which is scalable, numerically stable, and take advantage of GPUs (Patacchiola, 2022; Ermon, Kuleshov, & Contributors, 2022) at the cost of giving up the search for globally optimal solutions (Ermon, Kuleshov, & Contributors, 2022).
 
-One way to measure the distance between statistical objects is to measure the Kullback-Leibler (KL) Divergence $\mathcal{D}_{KL} (p_{\theta}, q_{\phi})$.
+One way to measure the distance between statistical objects is to measure the Kullback-Leibler (KL) Divergence.
 
 $$
 \begin{aligned}
@@ -61,7 +64,8 @@ Since explicitly parameterized distributions are limited, we can consider implic
 1. Define a naive prior distribution $p$ over a latent random variable $z\in Z$;
 2. Define a function approximator that $f_{\theta}(z)$ that approximates the distribution $p(z)$ via parameter $\theta$;
 3. Define a function that converts latent function approximation into a simpler distribution over the observable random space $F: f_{\theta}(z) \to q_{\phi}(x)$.
-   Using this approach we obtain a flexible generative model that is easy to sample.
+
+Using this approach we obtain a flexible generative model that is easy to sample.
 
 We can use KL-divergence as our loss function. But KL-divergence still arrives at an intractable state as shown below:
 
@@ -123,7 +127,7 @@ The forward process adds noise from the noise kernel $\mathcal{N}$. Gaussian Noi
 
 Ho, Jain, and Abbel (2020) introduced a promising approach for generative modeling called DDPM. As mentioned, the model mainly revolves around forward diffusion process and reverse diffusion process.
 
-During training, the forward diffusion process takes the image $x_{t:T}$ to a standard Gaussian $\mathcal{N}(0, \text{I})$. At each step of the Markov Process, add a Gaussian noise: $\mathcal{N}(x_t; \mu_t = \sqrt{1-\beta_t}x_{t-1}, \sigma^2_t = \beta_t \textbf{I})$ where $\beta$ is a step size defined in $\{\beta_t \in (0.1)\}^T_{t=1}$. This process will produce a latent variable $x_t$ with distribution $q(x_t|x_{t-1})$. This process is summarized as:
+During training, the forward diffusion process takes the image $x_{t:T}$ to a standard Gaussian $\mathcal{N}(0, \text{I})$. At each step of the Markov Process, add a Gaussian noise. This process will produce a latent variable $x_t$ with distribution $q(x_t\mid x_{t-1})$. This process is summarized as:
 
 $$
 \begin{aligned}
