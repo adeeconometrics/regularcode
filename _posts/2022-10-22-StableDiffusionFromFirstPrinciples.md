@@ -1,5 +1,5 @@
 ---
-title: Stable Diffusion From First Principles Part 1
+# title: Stable Diffusion From First Principles Part 1
 author: Dave Amiana
 date: 2022-10-22
 categories: [Programming, Computer Science, Diffusion Model, AI]
@@ -10,12 +10,12 @@ mermaid: true
 
 ## An Overview of Generative Modeling Framework
 
-Generative models have been successfully used for computer vision tasks such as image super-resolution (Saharia _et. al._, 2021), text-to-image synthesis (Mirza & Osindero, 2014), and 3D scene rendering (Poole, Jain, Barron, & Mildenhall, 2022) to name a few. The main idea behind generative models is to develop an approximation $q_{\phi}(x)$ of the probability distribution in a dataset $p_{\theta}(x)$. That is, the objective of generative models is to train a probabilistic model whose samples $x_i \sim q_{\phi}(x)$ approximate the data distribution $p_{\theta}$.
+Generative models have been successfully used for computer vision tasks such as image super-resolution (Saharia _et. al._, 2021), text-to-image synthesis (Mirza & Osindero, 2014), and 3D scene rendering (Poole, Jain, Barron, & Mildenhall, 2022). The goal of generative models is to train a probabilistic model that approximates the probability distribution of a dataset. 
+
+The Bayesian framework provides a solid foundation for machine learning by interpreting probability as an expression of belief based on prior knowledge. In this framework, we define a prior that represents our belief about the distribution and update it as new evidence is obtained. The Bayesian approach is used to update the model based on the distribution of new samples drawn from the dataset.
 
 
-The Bayesian framework offers a grounded theory for machine learning (Ghahramani, 2015). Thus, it is important to begin this section with an overview of the Bayesian approach to probability. Bayesian framework interprets probability as an assertion of belief predicated by prior knowledge or initial expectation of the distribution. In this framework, we define a prior that captures our belief about the distribution. Once an evidence is obtained, we update our initial distribution based on how the evidence in question changed the state of our belief about the true distribution. 
-
-The Bayesian approach starts by defining a posterior distribution $p (\theta \mid x \in  X)$. This is used in Machine Learning to update the model $\mathcal{M}$ based on the distribution of a new sample $x$ drawn from the dataset $X$.
+The prior predictive distribution is defined as the marginal probability of the data in the dataset. If you want to learn more about the application of generative models in computer vision tasks, this is the right article for you.
 
 The prior predictive distribution is defined as a marginal probability of $x\in X$.
 
