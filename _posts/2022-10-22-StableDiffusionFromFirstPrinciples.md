@@ -1,5 +1,5 @@
 ---
-# title: Stable Diffusion From First Principles Part 1
+# title: Stable Diffusion From First Principles
 author: Dave Amiana
 date: 2022-10-22
 categories: [Programming, Computer Science, Diffusion Model, AI]
