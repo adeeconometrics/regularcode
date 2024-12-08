@@ -7,7 +7,7 @@ order: 4
 
 # About Me
 
-Welcome to my personal website! I'm Dave Amiana, a passionate computer science student exploring the vast world of programming languages and software development.
+Welcome to my personal website! I'm Dave Amiana, a passionate developer exploring the vast world of software development.
 
 
 I believe in the power of technology to transform lives and solve real-world problems. My journey in computer science is driven by curiosity, continuous learning, and a desire to innovate. I strive to write clean, efficient, and maintainable code while sharing my knowledge with the community.
