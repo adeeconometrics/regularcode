@@ -27,7 +27,8 @@ I believe in the power of technology to transform lives and solve real-world pro
 
 ## Experience 
 
-### Associate Software Engineer, Chevron
+### Software Engineer - IT Foundations, Chevron
+
 Feb 2024 - Present
 
 - Developed frontend library components for an Enterprise UI library to support Python-Dash and render dashboards in native enterprise design language.
@@ -35,6 +36,8 @@ Feb 2024 - Present
 
 - Developed Enterprise language servers for Ansible Roles enabling autodoc, eager validation, code suggestions, and roles generation from the Azure Resource Manager Spec.
   - Streamlined the development process for Ansible Roles, reducing errors and increasing productivity through automated documentation and validation.
+
+- Developed an internal Python module to automate API load testing in simulating medium and high network traffic testing for scalability and reliability of implementing the cloud architecture.  This initiative ensured cloud architecture could handle varying levels of network traffic and emulated user behavior before release, improving its robustness and reliability for servicing enterprise applications. 
 
 - Designed improvements for integration tests on PaaS Ansible roles, focusing on Web-Queue Worker and N-tier architectures.
   - Improved reliability and performance of PaaS solutions, ensuring robust and scalable architectures for enterprise applications.
@@ -46,12 +49,14 @@ Feb 2024 - Present
 ### Software Engineering & GIS Analyst Intern, Chevron 
 
 **Software Engineering Intern - IT Foundations & Geospatial Information Systems**
+
 Aug 2023 - Nov 2023
 
 - Worked on writing a Python library to automate geospatial data governance with ArcGIS Dashboards integratation, autodoc CI pipeline, and reusable components which streamlined geospatial data management, improved data accuracy, and enhanced decision-making through automated governance and real-time dashboard updates.
 - Worked on a PowerPlatform tool to automate stale branch deletion, notify stakeholders with existing stale branches, and enable batch deletion. This initiative resulted into increased repository cleanliness, reduced manual maintenance efforts, and improved collaboration by keeping the codebase up-to-date and free of obsolete branches.
 
 **Software Engineering Intern - IT Foundations**
+
 May 2023 - Aug 2023
 
 - Worked on the enterprise model web application showcasing the best practices in Cloud architecture, API design, and web components as the new standard for the enterprise web apps. This initiative established a new standard for enterprise web apps, promoting scalability, maintainability, and efficient cloud integration.
